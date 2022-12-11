@@ -1,0 +1,45 @@
+﻿@model Ordering_Numbers.ViewModels.SortingDetails
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+<h1>Details</h1>
+<p>This list was sorted in @Model.orderType Order in @Model.orderingTimeMilliseconds milliseconds.</p>
+<h4>JSON:</h4>
+<!-- The text field -->
+<input type="text" value="@Model.sortedListJson" id="myInput">
+<!-- The button used to copy the text -->
+<button onclick="myFunction()">Copy</button>
+
+<br/>
+<br/>
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+<br/>
+
+<div>
+    <h4>NumbersList</h4>
+    <hr />
+    <p>@Model.sortedList</p>
+</div>
+
+
+
+<script>
+    function myFunction() {
+        // Get the text field
+        var copyText = document.getElementById("myInput");
+
+        // Select the text field
+        copyText.select();
+        copyText.setSelectionRange(0, 99999); // For mobile devices
+
+        // Copy the text inside the text field
+        navigator.clipboard.writeText(copyText.value);
+
+        // Alert the copied text
+        alert("Copied the text: " + copyText.value);
+    }
+</script>

@@ -1,0 +1,61 @@
+﻿@{
+    ViewData["Title"] = "Home Page";
+}
+@using Ordering_Numbers.ViewModels;
+@model SortingDetails
+@{
+    if (Model.errorMessage != null)
+    {
+        <div class="text-center">
+            <div>
+                <h3>Something went wrong! :(</h3>
+                <p>@Model.errorMessage</p>
+                <p>Please ensure your input is a list of numbers seperated by commas.</p>
+                <br />
+                <div class="btn-group">
+                    <button><a class="white-txt" asp-area="" asp-controller="Home" asp-action="Index">Home</a></button>
+                </div>
+            </div>
+        </div>
+    }
+    else
+    {
+        <div class="text-center">
+            <div>
+                <h3>Your list was successfully sorted in ascending order!</h3>
+                <p>Time Taken: @Model.orderingTimeMilliseconds milliseconds</p>
+
+                <h4>JSON:</h4>
+                <!-- The text field -->
+                <input type="text" value="@Model.sortedListJson" id="myInput">
+                <!-- The button used to copy the text -->
+                <button onclick="myFunction()">Copy</button>
+                <br/>
+                <br/>
+                <div class="btn-group">
+                    <button><a class="white-txt" asp-area="" asp-controller="Home" asp-action="Index">Home</a></button>
+                </div>
+                <p></p>
+                <p>Your Sorted List:</p>
+                <p>@Model.sortedList</p>
+            </div>
+        </div>
+    }
+}
+
+<script>
+    function myFunction() {
+        // Get the text field
+        var copyText = document.getElementById("myInput");
+
+        // Select the text field
+        copyText.select();
+        copyText.setSelectionRange(0, 99999); // For mobile devices
+
+        // Copy the text inside the text field
+        navigator.clipboard.writeText(copyText.value);
+
+        // Alert the copied text
+        alert("Copied the text: " + copyText.value);
+    }
+</script>

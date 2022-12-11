@@ -1,0 +1,26 @@
+﻿@{
+    ViewData["Title"] = "Home Page";
+}
+@model string
+
+<div class="text-center">
+    <div>
+        <h3>Please input a list of numbers seperated by commas.</h3>
+        <form method="POST" asp-action="SortAscending">
+            <label for="fname">Input:</label>
+            <input type="text" id="inputList" name="inputList" />
+            <br />
+            <input type="submit" id="SortAscending" value="Sort Ascending" />
+        </form>
+        <br />
+        <br />
+        <form method="POST" asp-action="SortDescending">
+            <label for="fname">Input:</label>
+            <input type="text" id="inputList" name="inputList" />
+            <br />
+             <input type="submit" id="SortDescending" value="Sort Descending" />
+        </form>   
+
+
+    </div>
+</div>

@@ -1,0 +1,44 @@
+﻿@model IEnumerable<Ordering_Numbers.Models.NumbersList>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Number Lists</h1>
+<table class="table">
+    <thead>
+        <tr>
+            <th>List ID</th>
+            <th>
+                @Html.DisplayNameFor(model => model.OrderType)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.OrderingTimeMilliseconds)
+            </th>
+            <th>
+                View List
+            </th>
+            
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Id)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.OrderType)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.OrderingTimeMilliseconds)
+                </td>
+                <td>
+                    <a asp-action="Details" asp-route-id="@item.Id">View-Full-List</a>
+                </td>
+                
+            </tr>
+        }
+    </tbody>
+</table>
